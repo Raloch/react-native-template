@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, StyleSheet} from 'react-native'
 
 export default class Nodeapplication extends React.Component {
   constructor(props) {
@@ -7,9 +7,18 @@ export default class Nodeapplication extends React.Component {
   }
   render() {
     return (
-      <View>
-        <Text>Nodeapplication页面</Text>
+      <View style={styles.container}>
+        <View style={{height: 80, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 30, color: '#fff'}}>Nodeapplication页面</Text>
+        </View>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#191B2A'
+  }
+})

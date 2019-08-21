@@ -1,8 +1,11 @@
 import React from 'react'
-import {View, Platform} from 'react-native'
+import {View, Platform, Image} from 'react-native'
 import {StackNavigator, TabNavigator} from 'react-navigation'
 import Home from './Home'
 import Nodeapplication from './Nodeapplication'
+import Friends from './Friends'
+import Settings from './Settings'
+import Img from '../img'
 
 export default class Route extends React.Component {
   constructor(props) {
@@ -27,14 +30,40 @@ let TabContainer = TabNavigator(
       screen: Home,
       navigationOptions: {
         tabBarLabel: '首页',
-        header: null
+        header: null,
+        tabBarIcon: ({focused}) => (
+          <Image resizeMode="contain" source={focused ? Img.tab_1_h : Img.tab_1} style={{width: 18, hieght: 18}} />
+        )
       },
     },
     Nodeapplication: {
       screen: Nodeapplication,
       navigationOptions: {
+        tabBarLabel: '节点申请',
         header: null,
-        tabBarLabel: '节点申请'
+        tabBarIcon: ({focused}) => (
+          <Image resizeMode="contain" source={focused ? Img.tab_2_h : Img.tab_2} style={{width: 18, hieght: 18}} />
+        )
+      }
+    },
+    Friends: {
+      screen: Friends,
+      navigationOptions: {
+        tabBarLabel: '我的好友',
+        header: null,
+        tabBarIcon: ({focused}) => (
+          <Image resizeMode="contain" source={focused ? Img.tab_3_h : Img.tab_3} style={{width: 18, hieght: 18}} />
+        )
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        tabBarLabel: '设置',
+        header: null,
+        tabBarIcon: ({focused}) => (
+          <Image resizeMode="contain" source={focused ? Img.tab_4_h : Img.tab_4} style={{width: 18, hieght: 18}} />
+        )
       }
     }
   },
@@ -47,8 +76,8 @@ let TabContainer = TabNavigator(
       activeTintColor: '#FFFFFF', // 文字和图片选中颜色
       inactiveTintColor: '#727272', // 文字和图片未选中颜色
       showIcon: true, // android 默认不显示 icon, 需要设置为 true 才会显示
-      showLabel: true,
-      upperCaseLabel: false,
+      showLabel: true, // 显示导航栏文字
+      upperCaseLabel: true, // 导航栏字母大写
       style: { // TabBar
         height: 50,
         backgroundColor: '#11111B', // tab背景色
@@ -79,6 +108,12 @@ const Nav = StackNavigator(
     },
     Nodeapplication: {
       screen: Nodeapplication
+    },
+    Friends: {
+      screen: Friends
+    },
+    Settings: {
+      screen: Settings
     }
   }
 )
